@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background:url("registrationback.jpg") no-repeat center/cover;
+
+    }
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .form-group input {
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #2193b0;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #17617b;
+    }
+    @media(max-width:500px){
+      .box { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Register</h2>
+
+    <div class="form-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="Enter your full name">
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter email">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+    </div>
+
+    <div class="form-group">
+      <label for="confirm">Confirm Password</label>
+      <input type="password" id="confirm" placeholder="Confirm password">
+    </div>
+
+    <button onclick="register()">Register</button>
+  </div>
+
+  <script>
+    function register() {
+      let name = document.getElementById("fullname").value.trim();
+      let user = document.getElementById("username").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let pass = document.getElementById("password").value;
+      let confirmPass = document.getElementById("confirm").value;
+
+      if (!name || !user || !email || !pass || !confirmPass) {
+        alert("All fields are required!");
+      } 
+      else if (!email.includes("@")) {
+        alert("Enter a valid email!");
+      }
+      else if (pass.length < 8) {
+        alert("Password must be at least 4 characters!");
+      }
+      else if (pass !== confirmPass) {
+        alert("Passwords do not match!");
+      }
+      else {
+        alert("Registration Successful!");
+
+        // ✅ Clear form after success
+        document.getElementById("fullname").value = "";
+        document.getElementById("username").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("confirm").value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
